@@ -20,7 +20,7 @@ public class PayrollController(IPayrollRepo repository, IMapper mapper) : Contro
         var payrollItems = _repository.GetPayrolls();
         return Ok(_mapper.Map<IEnumerable<PayrollReadDTOs>>(payrollItems));
     }
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetPayrollById")]
     public ActionResult<Payroll> GetPayrollById(int id)
     {
         Console.WriteLine("---> Getting payroll by ID....");
@@ -30,5 +30,15 @@ public class PayrollController(IPayrollRepo repository, IMapper mapper) : Contro
             return Ok(_mapper.Map<PayrollReadDTOs>(payrollItem));
         }
         return NotFound();
+    }
+    [HttpPost]
+    public ActionResult<PayrollReadDTOs> CreatePayroll(PayrollCreateDTO payrollCreateDTO)
+    {
+        Console.WriteLine("--> Creatign a payroll...");
+        var payroll = _mapper.Map<Payroll>(payrollCreateDTO);
+        _repository.CreatePayroll(payroll);
+        _repository.SaveChanges();
+        var payrollReadDTO = _mapper.Map<PayrollReadDTOs>(payroll);
+        return CreatedAtRoute(nameof(GetPayrollById), new { payrollReadDTO.Id }, payrollReadDTO);
     }
 }
