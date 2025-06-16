@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: payrolls-depl
+spec: 
+  replicas: 3
+  selector: 
+     matchLabels:
+       app: payrollservice
+  template: 
+    metadata:
+      labels:
+        app: payrollservice
+    spec:
+      containers: 
+         - name: payrollservice
+           image: nkaka23dev/payrollservice:latest
+          
+      
