@@ -166,6 +166,10 @@ The API now should include:
   --project Core/Core.csproj \
   --startup-project TheEmployeeAPI/TheEmployeeAPI.csproj
  - dotnet ef migrations script -o [name].sql  // generate database schema
+
+ - kubectl apply -f [fileName].yaml
+ - kubectl get deployments
+ - kubectl delete deployment  payrolls-depl
  ```
 
  #### Filtering and Pagination 
@@ -220,3 +224,7 @@ We welcome your contributions to this learning project!
 - Timesheets
 
 - Monitor productivity and working patterns
+
+### ApiGateway:
+Client --> Nginx Ingress Controller (implements Ingress rules) --> Service --> Pod (maybe running Ocelot) --> Backend Microservices
+- 
