@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: timetrackings-depl
+spec: 
+  replicas: 1
+  selector: 
+     matchLabels:
+       app: timetrackingservice
+  template: 
+    metadata:
+      labels:
+        app: timetrackingservice
+    spec:
+      containers: 
+         - name: timetrackingservice
+           image: nkaka23dev/timetrackingservice:latest        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: timetrackingservice-clusterip-srv
+spec: 
+  type: ClusterIP
+  selector: 
+    app: timetrackingservice
+  ports:
+   - name: timetrackingservice
+     protocol: TCP
+     port: 80
+     targetPort: 80

@@ -170,6 +170,8 @@ The API now should include:
  - kubectl apply -f [fileName].yaml
  - kubectl get deployments
  - kubectl delete deployment  payrolls-depl
+ - kubectl rollout restart deployment payrolls-depl
+ - kubectl get namespaces 
  ```
 
  #### Filtering and Pagination 
