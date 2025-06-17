@@ -11,6 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient<IHttpTimeTrackingDataClient, HttpTimeTrackingDataClient>();
 builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
 
+var timeTrackingServiceUrl = builder.Configuration["TimeTrackingService"];
+Console.WriteLine($"TimeTrackingService URL: {timeTrackingServiceUrl}");
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -19,7 +19,7 @@ public class HttpTimeTrackingDataClient(HttpClient httpClient, IConfiguration co
         var response = await _httpClient.PostAsync($"{_configuration["TimeTrackingService"]}/api/t/payroll/", httpContent);
         if (response.IsSuccessStatusCode)
         {
-            Console.WriteLine("Sync POST to Time tracking was OK!");
+            Console.WriteLine("Sync POST to TimeTracking was OK!");
         }
         else
         {
