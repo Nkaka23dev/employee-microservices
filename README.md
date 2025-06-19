@@ -169,7 +169,10 @@ The API now should include:
 
  - kubectl apply -f [fileName].yaml
  - kubectl get deployments
- - kubectl delete deployment  payrolls-depl
+ - kubectl delete deployment  filename
+ - kubectl rollout restart deployment filename
+ - kubectl get namespaces 
+ - kubectl get pods --namespace=ingress-nginx
  ```
 
  #### Filtering and Pagination 
