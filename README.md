@@ -20,10 +20,10 @@ Ensure you have the following installed:
 
 ```sh
 # Clone the repository
-git clone https://github.com/Nkaka23dev/employee-api.git
+https://github.com/Nkaka23dev/employee-microservices.git
 
 # Navigate to the project directory
-cd employee-api
+cd employee-microservices
 
 # Restore the required packages
 dotnet restore
