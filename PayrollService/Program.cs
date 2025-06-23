@@ -4,27 +4,36 @@ using PayrollService.SyncDataService.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Register common services
 builder.Services.AddOpenApi();
-builder.Services.AddDbContext<AppDbContext>(option => option.UseInMemoryDatabase("inMem"));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<IHttpTimeTrackingDataClient, HttpTimeTrackingDataClient>();
 builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
 
-var timeTrackingServiceUrl = builder.Configuration["TimeTrackingService"];
-Console.WriteLine($"TimeTrackingService URL: {timeTrackingServiceUrl}");
+// Determining environment before calling builder.Build()
+if (builder.Environment.IsProduction())
+{
+    Console.WriteLine("=====> Using SqlServerdb for production");
+    builder.Services.AddDbContext<AppDbContext>(option =>
+        option.UseSqlServer(builder.Configuration.GetConnectionString("PayrollsConn")));
+}
+else
+{
+    Console.WriteLine("=====> Using InMem db");
+    builder.Services.AddDbContext<AppDbContext>(option =>
+        option.UseInMemoryDatabase("inMem"));
+}
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+// Middleware
+if (!app.Environment.IsProduction())
 {
     app.MapOpenApi();
-    app.UseHttpsRedirection(); // keep this in dev only
+    app.UseHttpsRedirection();
 }
 
-// app.UseHttpsRedirection(); // optional: comment out for Docker if needed
-
 app.MapControllers();
-
-PrepDb.PrepPopulation(app);
+PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 app.Run();

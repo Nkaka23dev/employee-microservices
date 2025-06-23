@@ -28,4 +28,5 @@ spec:
    - name: payrollservice
      protocol: TCP
      port: 80
-     targetPort: 80
+     targetPort: 80 
+     

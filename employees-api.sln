@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollService", "PayrollSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrackingService", "TimeTrackingService\TimeTrackingService.csproj", "{63EF0F87-BF47-4D74-818A-41F20A630A86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheEmployeeAPIE2ETests", "TheEmployeeAPIE2ETests\TheEmployeeAPIE2ETests.csproj", "{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,18 @@ Global
 		{63EF0F87-BF47-4D74-818A-41F20A630A86}.Release|x64.Build.0 = Release|Any CPU
 		{63EF0F87-BF47-4D74-818A-41F20A630A86}.Release|x86.ActiveCfg = Release|Any CPU
 		{63EF0F87-BF47-4D74-818A-41F20A630A86}.Release|x86.Build.0 = Release|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Release|x64.Build.0 = Release|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE00F8BB-4DA8-49DA-A8F1-E485A9CE82C5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

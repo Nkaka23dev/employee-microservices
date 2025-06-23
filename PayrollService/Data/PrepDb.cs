@@ -1,21 +1,34 @@
+using Microsoft.EntityFrameworkCore;
 using PayrollService.Models;
 
 namespace PayrollService.Data;
 
 public static class PrepDb
 {
-    public static void PrepPopulation(this WebApplication app)
+    public static void PrepPopulation(this WebApplication app, bool isProd)
     {
         using var serviceScope = app.Services.CreateScope();
         var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
         if (context != null)
         {
-            SeedData(context);
+            SeedData(context, isProd);
         }
 
     }
-    private static void SeedData(AppDbContext context)
+    private static void SeedData(AppDbContext context, bool isProd)
     {
+        if (isProd)
+        {
+            Console.WriteLine("Attempting to apply migrations....");
+            try
+            {
+                context.Database.Migrate();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"---> Could not run migrations: {e.Message}");
+            }
+        }
         if (!context.Payrolls.Any())
         {
             Console.WriteLine("----> Seeding data started.......");
