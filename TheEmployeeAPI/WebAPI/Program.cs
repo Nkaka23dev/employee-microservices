@@ -48,7 +48,7 @@ app.UseCors("corsPolicy");
 app.UseSwaggerDocumentation();
 app.UseExceptionHandler();
 app.UseHttpsRedirection();
-app.UseMiddleware<RestrictAccessMiddleware>();
+// app.UseMiddleware<RestrictAccessMiddleware>();
 app.MapControllers();
 
 await app.InitializeDatabaseAsync();

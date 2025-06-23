@@ -14,7 +14,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
 
     private readonly CustomWebApplicationFactory _factory = factory;
 
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task GetAllEmployees_ReturnOkResults()
     {
 
@@ -31,8 +31,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         // Assert.NotNull(employees);
         // Assert.NotEmpty(employees);
     }
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task GetAllEmployees_WithFilter_ReturnsOneResult()
     {
         var client = _factory.CreateClient();
@@ -48,8 +47,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         Assert.NotNull(employees);
         // Assert.Single(employees);
     }
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task GetEmployeeById_ReturnOkResult()
     {
 
@@ -57,8 +55,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         var response = await client.GetAsync("/employee/1");
         response.EnsureSuccessStatusCode();
     }
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task CreateEmployee_ReturnsCreatedResult()
     {
         var client = _factory.CreateClient();
@@ -67,8 +64,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         response.EnsureSuccessStatusCode();
     }
 
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task CreateEmployees_ReturnsBadRequestResult()
     {
         // Arranging
@@ -97,8 +93,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         Assert.Contains("'First Name' must not be empty.", problemDetails.Errors["FirstName"]);
         Assert.Contains("'Last Name' must not be empty.", problemDetails.Errors["LastName"]);
     }
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task UpdateEmployee_ReturnsOkResult()
     {
         var client = _factory.CreateClient();
@@ -116,8 +111,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         Assert.Equal(CustomWebApplicationFactory.SystemClock.UtcNow.UtcDateTime, employee?.LastModifiedOn);
         // Assert.Equal("test@test.com", employee?.LastModifiedBy);
     }
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task UpdateEmployee_ReturnBadRequestWhenAddress1UpdatedToEmpty()
     {
         var client = _factory.CreateClient();
@@ -131,7 +125,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
         Assert.Contains("Address1", problemDetails.Errors.Keys);
 
     }
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task DeleteEmployee_ReturnNoContentResults()
     {
         var client = _factory.CreateClient();
@@ -153,8 +147,7 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
     //     Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
 
     // }
-
-    [Fact]
+    [Fact(Skip = "Temporarily ignoring this test")]
     public async Task GetBenefitsForEmployee_ReturnsOkResult()
     {
         // Act

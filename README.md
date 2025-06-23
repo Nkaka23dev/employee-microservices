@@ -1,6 +1,6 @@
-## Employee API  
+## Employee Mgts
 
-This is an **ASP.NET Core** employee management system built with **C#** and **.NET**. The project currently uses **Postgres** database.  It includes different services, such as a standard RESTful API (JSON) and a SOAP service.
+A microservices Employee Management System using Ocelot API Gateway, RabbitMQ for messaging, and Kubernetes with Nginx Ingress for deployment and routing.
 
 [Click here for the frontend built with Angular.](https://github.com/Nkaka23dev/employee-panel)
 
@@ -12,9 +12,46 @@ Ensure you have the following installed:
 - **.NET SDK**: (version 9.0 or later)  
 - **Entity Framework (EF Core)**  
 - **PostgreSQL**: database
+- **Docker Desktop**
+- **Azure Data Studio 2**
 - **NuGet Gallery**: VSCode extention(Optional)
 - **dotnet-svcutil**: A tool to generate WCF SOAP client proxies for consuming SOAP services. [Link](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-svcutil-guide?tabs=dotnetsvcutil2x).
 - **SoapUI**: GUI tool for testing SOAP and REST APIs
+
+### K8S and Docker commands you might need 
+
+```ts
+ - kubectl apply -f [fileName].yaml
+ - kubectl get deployments
+ - kubectl delete deployment  filename
+ - kubectl rollout restart deployment filename
+ - kubectl get namespaces 
+ - kubectl get pods --namespace=ingress-nginx
+ - kubectl get storageclass
+ - kubectl create secret generic mssql --from-literal=SA_PASSWORD='*********'
+ - kubectl get all
+ - kubectl get pvc
+
+ //Getting Started with Sql Server
+ - docker pull mcr.microsoft.com/mssql/server:2022-latest
+
+ - docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrong!Passw0rd" \
+   -p 1433:1433 --name sql2022 -d mcr.microsoft.com/mssql/server:2022-latest
+ ```
+#### .NET General Command
+
+```ts
+ - dotnet build //Build the project
+ - dotnet test //Running tests
+ - dotnet run  //Starting the project
+ - dotnet ef migrations add --file-name //Creating new migration
+ - dotnet ef database update //Modified database with new migration
+ - dotnet ef migrations add InitialCreate \
+  --project Core/Core.csproj \
+  --startup-project TheEmployeeAPI/TheEmployeeAPI.csproj
+ - dotnet ef migrations script -o [name].sql  // generate database schema 
+
+ ```
 
 ### Setup Instructions 
 
@@ -58,6 +95,7 @@ export DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1
 dotnet-svcutil "http://localhost:5079/BenefitService.svc?singleWsdl"
 
 ```
+
 ### Test BenefitSoapService with SoapUI and Postman
 
 After successfully running the project, copy the WSDL URL from the browser and paste it into the [SoapUI tool](https://www.soapui.org/) 
@@ -152,28 +190,6 @@ The API now should include:
 - **TimeTracking**: Tracks employee clock-in and clock-out times.  
 - **UserRoles & EmployeeRoles**: Defines roles such as admin, manager, and employee to manage access and permissions.
 
-
-## Useful info:
-
-#### Some commands
-```ts
- - dotnet build //Build the project
- - dotnet test //Running tests
- - dotnet run  //Starting the project
- - dotnet ef migrations add --file-name //Creating new migration
- - dotnet ef database update //Modified database with new migration
- - dotnet ef migrations add InitialCreate \
-  --project Core/Core.csproj \
-  --startup-project TheEmployeeAPI/TheEmployeeAPI.csproj
- - dotnet ef migrations script -o [name].sql  // generate database schema
-
- - kubectl apply -f [fileName].yaml
- - kubectl get deployments
- - kubectl delete deployment  filename
- - kubectl rollout restart deployment filename
- - kubectl get namespaces 
- - kubectl get pods --namespace=ingress-nginx
- ```
 
  #### Filtering and Pagination 
 ```ts
