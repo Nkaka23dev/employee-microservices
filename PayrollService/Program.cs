@@ -12,19 +12,21 @@ builder.Services.AddHttpClient<IHttpTimeTrackingDataClient, HttpTimeTrackingData
 builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
 
 // Determining environment before calling builder.Build()
-if (builder.Environment.IsProduction())
-{
-    Console.WriteLine("=====> Using SqlServerdb for production");
-    builder.Services.AddDbContext<AppDbContext>(option =>
-        option.UseSqlServer(builder.Configuration.GetConnectionString("PayrollsConn")));
-}
-else
-{
-    Console.WriteLine("=====> Using InMem db");
-    builder.Services.AddDbContext<AppDbContext>(option =>
-        option.UseInMemoryDatabase("inMem"));
-}
-
+// if (builder.Environment.IsProduction())
+// {
+//     Console.WriteLine("=====> Using SqlServerdb for production");
+//     builder.Services.AddDbContext<AppDbContext>(option =>
+//         option.UseSqlServer(builder.Configuration.GetConnectionString("PayrollsConn")));
+// }
+// else
+// {
+//     Console.WriteLine("=====> Using InMem db");
+//     builder.Services.AddDbContext<AppDbContext>(option =>
+//         option.UseInMemoryDatabase("inMem"));
+// }
+Console.WriteLine("=====> Using InMem db");
+builder.Services.AddDbContext<AppDbContext>(option =>
+    option.UseInMemoryDatabase("inMem"));
 var app = builder.Build();
 
 // Middleware

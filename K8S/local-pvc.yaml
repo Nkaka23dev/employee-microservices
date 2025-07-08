@@ -1,10 +1,25 @@
+# local-pv.yaml
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata: 
-  name: mssql-claim
-spec: 
+kind: PersistentVolume
+metadata:
+  name: mssql-pv
+spec:
+  capacity:
+    storage: 200Mi
   accessModes:
     - ReadWriteMany
-  resources: 
-    requests: 
+  storageClassName: hostpath
+  hostPath:
+      path: /Users/thegym/mssql-data 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
       storage: 200Mi
+  storageClassName: hostpath

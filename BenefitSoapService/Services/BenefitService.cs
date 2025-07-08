@@ -33,7 +33,6 @@ public class BenefitService(
         }
     }
 
-
     public async Task<BenefitContract> CreateBenefit(BenefitContract request)
     {
         var newBenefit = _mapper.Map<Benefit>(request);
