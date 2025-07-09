@@ -14,19 +14,22 @@ spec:
     spec:
       containers: 
          - name: payrollservice
-           image: nkaka23dev/payrollservice:latest        
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: payrollservice-clusterip-srv
-spec: 
-  type: ClusterIP
-  selector: 
-    app: payrollservice
-  ports:
-   - name: payrollservice
-     protocol: TCP
-     port: 80
-     targetPort: 80 
+           image: nkaka23dev/payrollservice:latest 
+           env:
+             - name: ASPNETCORE_ENVIRONMENT
+               value: Development       
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: payrollservice-clusterip-srv
+# spec: 
+#   type: ClusterIP
+#   selector: 
+#     app: payrollservice
+#   ports:
+#    - name: payrollservice
+#      protocol: TCP
+#      port: 80
+#      targetPort: 80 
      
