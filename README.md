@@ -236,7 +236,7 @@ We welcome your contributions to this learning project!
 
 - Bonuses and incentives
 
-4. Time Tracking
+4. Time Tracking(Will be resumed)
 
 - Clock-in/clock-out system
 
